@@ -11,6 +11,18 @@
   <meta property="og:description" content="A bottom-up systems forum to restore balance between productive economies and policy incentives." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://economicsymmetryforum.org/" />
+  <meta property="og:image" content="https://economicsymmetryforum.org/Thumbnail.png" />
+  <meta property="og:image:alt" content="Economic Symmetry Forum visualization" />
+  
+  <!-- Twitter Card tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Economic Symmetry Forum (ESF)" />
+  <meta name="twitter:description" content="A bottom-up systems forum to restore balance between productive economies and policy incentives." />
+  <meta name="twitter:image" content="https://economicsymmetryforum.org/Thumbnail.png" />
+  
+  <!-- Favicon -->
+  <link rel="icon" href="logo1.png" type="image/png" />
+  <link rel="apple-touch-icon" href="logo1.png" />
   
   <!-- Preconnect to fonts if needed -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,13 +31,44 @@
   
   <!-- Main CSS -->
   <link rel="stylesheet" href="styles.css">
+  
+  <!-- Structured Data for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Economic Symmetry Forum",
+    "url": "https://economicsymmetryforum.org/",
+    "logo": "https://economicsymmetryforum.org/logo2.png",
+    "description": "A bottom-up systems forum to restore balance between productive economies and policy incentives.",
+    "sameAs": [
+      "https://www.youtube.com/channel/economicsymmetryforum"
+    ],
+    "event": {
+      "@type": "Event",
+      "name": "Annual Systems Forum: Rebuilding Economic Symmetry",
+      "startDate": "2026-06-15",
+      "endDate": "2026-06-17",
+      "location": {
+        "@type": "Place",
+        "name": "London, UK",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "London",
+          "addressCountry": "UK"
+        }
+      },
+      "description": "Conference bringing together stakeholders to address economic feedback loops"
+    }
+  }
+  </script>
 </head>
 
 <body>
   <header class="header">
     <div class="header-container">
       <a class="brand" href="#top" aria-label="Economic Symmetry Forum home">
-          <img src="logo2.png" alt="Economic Symmetry Forum logo" class="logo" style="border:0; outline:0; box-shadow:none;">
+          <img src="logo2.png" alt="Economic Symmetry Forum logo" width="48" height="46" class="logo" style="border:0; outline:0; box-shadow:none;">
         <div>
           <strong>Economic Symmetry Forum</strong>
           <small>Systems thinking for resilient economies</small>
@@ -45,6 +88,17 @@
         <span></span>
         <span></span>
       </button>
+    </div>
+    
+    <!-- Mobile Navigation - Static HTML instead of JS-generated -->
+    <div class="mobile-nav">
+      <nav aria-label="Mobile navigation">
+        <a href="#centres">Centres</a>
+        <a href="#model">The Model</a>
+        <a href="#stakeholders">Stakeholders</a>
+        <a href="#join">Join</a>
+        <a class="btn primary" href="#join">Get involved</a>
+      </nav>
     </div>
   </header>
 
@@ -71,13 +125,16 @@
             </div>
           </div>
 
-          <!-- Simple hero visual with YouTube button -->
+          <!-- Responsive YouTube video embed -->
           <div class="hero-visual">
-            <div class="yt-button-container">
-              <a href="https://www.youtube.com/watch?v=kw6a2cUG6yY" target="_blank" class="yt-button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                <div>Watch<br>on<br>YouTube</div>
-              </a>
+            <div class="video-container">
+              <iframe
+                src="https://www.youtube.com/embed/kw6a2cUG6yY"
+                title="Economic Symmetry Forum video"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
             </div>
           </div>
         </div>
@@ -221,7 +278,7 @@
           </div>
           
           <div class="model-center">
-            <img src="4-Economic-Feedback-loops.png" alt="The 4 feedback loops model visualization showing Business and Government sides" class="model-image">
+            <img src="4-Economic-Feedback-loops.png" alt="The 4 feedback loops model visualization showing Business and Government sides" width="600" height="450" class="model-image">
             <p class="model-caption">Visualization of the four key feedback loops in economic systems</p>
           </div>
           
@@ -247,9 +304,9 @@
         <p class="section-intro">Recent insights from our research centres and stakeholder dialogues.</p>
         
         <div class="spotlight-cards">
-          <article class="spotlight-card">
+<article class="spotlight-card">
             <div class="spotlight-image">
-              <img src="https://via.placeholder.com/600x400" alt="Housing Market Analysis">
+              <img src="feedback-loops.png" alt="Housing Market Analysis" width="600" height="400" loading="lazy">
               <span class="tag">Housing & Land</span>
             </div>
             <div class="spotlight-content">
@@ -264,7 +321,7 @@
           
           <article class="spotlight-card">
             <div class="spotlight-image">
-              <img src="https://via.placeholder.com/600x400" alt="Trade Relations">
+              <img src="4-Economic-Feedback-loops2.png" alt="Trade Relations" width="600" height="400" loading="lazy">
               <span class="tag">Trade Integrity</span>
             </div>
             <div class="spotlight-content">
@@ -279,7 +336,7 @@
           
           <article class="spotlight-card">
             <div class="spotlight-image">
-              <img src="https://via.placeholder.com/600x400" alt="Energy Constraints">
+              <img src="Thumbnail.png" alt="Energy Constraints" width="600" height="400" loading="lazy">
               <span class="tag">Energy & Resources</span>
             </div>
             <div class="spotlight-content">

@@ -10,9 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // We've replaced the modal with direct YouTube links
   // No video modal functionality needed
 
-  // Mobile menu toggle
+  // Mobile menu toggle - works with the static mobile nav in HTML
   const menuToggle = document.querySelector('.menu-toggle');
-  if (menuToggle) {
+  const mobileNav = document.querySelector('.mobile-nav');
+  
+  if (menuToggle && mobileNav) {
     menuToggle.addEventListener('click', () => {
       document.body.classList.toggle('menu-open');
       const isOpen = document.body.classList.contains('menu-open');
@@ -29,6 +31,20 @@ document.addEventListener('DOMContentLoaded', () => {
         spans[1].style.opacity = '1';
         spans[2].style.transform = 'none';
       }
+    });
+    
+    // Close menu when clicking on mobile nav links
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.body.classList.remove('menu-open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        
+        // Reset hamburger icon
+        const spans = menuToggle.querySelectorAll('span');
+        spans[0].style.transform = 'none';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'none';
+      });
     });
   }
 
@@ -223,43 +239,17 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(elem);
   });
 
-  // Additional functionality for mobile navigation
-  function setupMobileNav() {
-    // Create mobile nav container if it doesn't exist yet
-    if (!document.querySelector('.mobile-nav')) {
-      const nav = document.createElement('nav');
-      nav.className = 'mobile-nav';
-      nav.setAttribute('aria-label', 'Mobile navigation');
+  // Add keyboard accessibility for the mobile menu
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && document.body.classList.contains('menu-open')) {
+      document.body.classList.remove('menu-open');
+      menuToggle.setAttribute('aria-expanded', 'false');
       
-      // Clone navigation links from desktop
-      const links = document.querySelector('.navlinks').cloneNode(true);
-      nav.appendChild(links);
-      
-      document.body.appendChild(nav);
-      
-      // Add click handler to close menu when a link is clicked
-      nav.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          document.body.classList.remove('menu-open');
-          menuToggle.setAttribute('aria-expanded', 'false');
-          
-          const spans = menuToggle.querySelectorAll('span');
-          spans[0].style.transform = 'none';
-          spans[1].style.opacity = '1';
-          spans[2].style.transform = 'none';
-        });
-      });
-    }
-  }
-  
-  if (window.innerWidth <= 768) {
-    setupMobileNav();
-  }
-
-  // Setup on resize
-  window.addEventListener('resize', () => {
-    if (window.innerWidth <= 768) {
-      setupMobileNav();
+      // Reset hamburger icon
+      const spans = menuToggle.querySelectorAll('span');
+      spans[0].style.transform = 'none';
+      spans[1].style.opacity = '1';
+      spans[2].style.transform = 'none';
     }
   });
 });
