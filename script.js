@@ -7,27 +7,57 @@ document.addEventListener('DOMContentLoaded', () => {
     yearEl.textContent = new Date().getFullYear();
   }
   
+  // Load YouTube API
+  let tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  let firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  
+  let youtubePlayer;
+  
+  // This function will be called by the YouTube API
+  window.onYouTubeIframeAPIReady = function() {
+    // Initialize without autoplay - we'll start it manually when needed
+    youtubePlayer = new YT.Player('youtubePlayer', {
+      height: '100%',
+      width: '100%',
+      videoId: 'kw6a2cUG6yY',
+      playerVars: {
+        'playsinline': 1,
+        'rel': 0,
+        'modestbranding': 1
+      }
+    });
+  };
+  
   // Video Modal Functionality
   function setupVideoModal() {
     const videoThumbnail = document.querySelector('.video-thumbnail');
     const openVideoBtn = document.getElementById('openVideoBtn');
     const videoModal = document.getElementById('videoModal');
     const closeVideoBtn = document.getElementById('closeVideoBtn');
-    const modalVideo = document.getElementById('modalVideo');
     
-    if (videoThumbnail && videoModal && closeVideoBtn && modalVideo) {
+    if (videoThumbnail && videoModal && closeVideoBtn) {
       // Function to open the modal
       function openModal() {
         videoModal.classList.add('open');
         document.body.classList.add('modal-open');
-        modalVideo.play();
+        
+        // Play YouTube video if the player is ready
+        if (youtubePlayer && typeof youtubePlayer.playVideo === 'function') {
+          youtubePlayer.playVideo();
+        }
       }
       
       // Function to close the modal
       function closeModal() {
         videoModal.classList.remove('open');
         document.body.classList.remove('modal-open');
-        modalVideo.pause();
+        
+        // Pause YouTube video if the player is ready
+        if (youtubePlayer && typeof youtubePlayer.pauseVideo === 'function') {
+          youtubePlayer.pauseVideo();
+        }
       }
       
       // Event listeners
