@@ -7,60 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     yearEl.textContent = new Date().getFullYear();
   }
   
-  // Video Modal Functionality
-  function setupVideoModal() {
-    const videoThumbnail = document.querySelector('.video-thumbnail');
-    const openVideoBtn = document.getElementById('openVideoBtn');
-    const videoModal = document.getElementById('videoModal');
-    const closeVideoBtn = document.getElementById('closeVideoBtn');
-    const youtubePlayer = document.getElementById('youtubePlayer');
-    
-    // Set the YouTube video ID
-    const videoId = 'kw6a2cUG6yY';
-    
-    if (videoThumbnail && videoModal && closeVideoBtn && youtubePlayer) {
-      // Function to open the modal
-      function openModal() {
-        // Set the YouTube embed URL when opening the modal
-        youtubePlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
-        videoModal.classList.add('open');
-        document.body.classList.add('modal-open');
-      }
-      
-      // Function to close the modal
-      function closeModal() {
-        videoModal.classList.remove('open');
-        document.body.classList.remove('modal-open');
-        // Reset iframe src to stop the video
-        youtubePlayer.src = 'about:blank';
-      }
-      
-      // Event listeners
-      videoThumbnail.addEventListener('click', openModal);
-      openVideoBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        openModal();
-      });
-      
-      closeVideoBtn.addEventListener('click', closeModal);
-      
-      // Close modal when clicking outside the video
-      videoModal.addEventListener('click', (e) => {
-        if (e.target === videoModal) {
-          closeModal();
-        }
-      });
-      
-      // Close modal with Escape key
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && videoModal.classList.contains('open')) {
-          closeModal();
-        }
-      });
-    }
-  }
-  
-  setupVideoModal();
+  // We've replaced the modal with direct YouTube links
+  // No video modal functionality needed
 
   // Mobile menu toggle
   const menuToggle = document.querySelector('.menu-toggle');
