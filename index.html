@@ -67,26 +67,57 @@
 
             <div class="secondary-links">
               <a href="#about">More about ESF</a>
-              <a href="#video">Watch full video</a>
+              <a id="openVideoBtn" href="#video">Watch full video</a>
             </div>
           </div>
 
           <div class="hero-visual">
-            <div class="card accentBuff">
-              <div class="tag">Quick explainer</div>
-              <h3>The Asymmetric Constraint Model</h3>
-              <p>
-                When responses to external distortions like trading partner subsidies and trade imbalance lean too heavily on policy
-                stabilisers, the domestic economy can weaken. The ESF helps stakeholders see where pressure enters the system
-                and where incentives diverge.
-              </p>
-              <div class="topics">
-                <span class="pill">Value creation</span>
-                <span class="pill">Trust</span>
-                <span class="pill">Trade symmetry</span>
-                <span class="pill">Capital allocation</span>
+            <div class="video-thumbnail">
+              <video class="thumbnail-video" preload="metadata">
+                <source src="ESF-Hero.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="play-overlay">
+                <div class="play-button">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                </div>
+                <div class="play-text">Watch full video</div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Video Modal -->
+      <div id="videoModal" class="modal">
+        <div class="modal-content">
+          <div class="modal-close" id="closeVideoBtn">×</div>
+          <div class="modal-video-container">
+            <video id="modalVideo" controls>
+              <source src="ESF-Hero.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Quick Explainer Section -->
+    <div class="wrap">
+      <section class="quick-explainer-section">
+        <div class="card accentBuff">
+          <div class="tag">Quick explainer</div>
+          <h3>The Asymmetric Constraint Model</h3>
+          <p>
+            When responses to external distortions like trading partner subsidies and trade imbalance lean too heavily on policy
+            stabilisers, the domestic economy can weaken. The ESF helps stakeholders see where pressure enters the system
+            and where incentives diverge.
+          </p>
+          <div class="topics">
+            <span class="pill">Value creation</span>
+            <span class="pill">Trust</span>
+            <span class="pill">Trade symmetry</span>
+            <span class="pill">Capital allocation</span>
           </div>
         </div>
       </section>
@@ -190,26 +221,38 @@
           You can later expand into the full diagram for deeper analysis.
         </p>
 
-        <div class="cards model-cards">
-          <div class="card accentCyan">
-            <div class="tag">Left-side loop</div>
-            <h3>Bank ↔ Business</h3>
-            <p>Credit funds productive risk. Losses are absorbed at the point of risk, encouraging discipline.</p>
+        <div class="model-container">
+          <div class="model-left">
+            <div class="model-card top card accentCyan">
+              <div class="tag">Left-side loop</div>
+              <h3>Bank ↔ Business</h3>
+              <p>Credit funds productive risk. Losses are absorbed at the point of risk, encouraging discipline.</p>
+            </div>
+            
+            <div class="model-card bottom card accentCyan">
+              <div class="tag">Left-side loop</div>
+              <h3>Product ↔ Consumer</h3>
+              <p>Consumers vote with spending. Competition rewards productivity, quality, and value creation.</p>
+            </div>
           </div>
-          <div class="card accentCyan">
-            <div class="tag">Left-side loop</div>
-            <h3>Product ↔ Consumer</h3>
-            <p>Consumers vote with spending. Competition rewards productivity, quality, and value creation.</p>
+          
+          <div class="model-center">
+            <img src="4-Economic-Feedback-loops.png" alt="The 4 feedback loops model visualization showing Business and Government sides" class="model-image">
+            <p class="model-caption">Visualization of the four key feedback loops in economic systems</p>
           </div>
-          <div class="card accentBuff">
-            <div class="tag">Right-side loop</div>
-            <h3>Central Bank ↔ Government</h3>
-            <p>Stabilisation can prevent collapse, but can also distort signals if used as a default response.</p>
-          </div>
-          <div class="card accentBuff">
-            <div class="tag">Right-side loop</div>
-            <h3>Policy ↔ Lobbyist</h3>
-            <p>Influence concentrates where policy levers exist—risking capture, misallocation, and trust erosion.</p>
+          
+          <div class="model-right">
+            <div class="model-card top card accentBuff">
+              <div class="tag">Right-side loop</div>
+              <h3>Central Bank ↔ Government</h3>
+              <p>Stabilisation can prevent collapse, but can also distort signals if used as a default response.</p>
+            </div>
+            
+            <div class="model-card bottom card accentBuff">
+              <div class="tag">Right-side loop</div>
+              <h3>Policy ↔ Lobbyist</h3>
+              <p>Influence concentrates where policy levers exist—risking capture, misallocation, and trust erosion.</p>
+            </div>
           </div>
         </div>
       </section>

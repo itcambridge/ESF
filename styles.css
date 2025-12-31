@@ -22,7 +22,7 @@
   --ink-muted: rgba(11, 15, 20, 0.6); /* Tertiary/muted text */
   
   /* Backgrounds - calmer tones */
-  --paper: #f9f8f5;            /* Main background - slightly warmer than pure white */
+  --paper: #f6f3ea;            /* Main background - slightly warmer than pure white */
   --paper-gradient: linear-gradient(to bottom, #f4f1e8, #f9f8f5); /* Subtle vertical gradient - reversed */
   --card-bg: rgba(255, 255, 255, 0.85); /* Card backgrounds with slight transparency */
   --section-divider: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.03)); /* Reversed */
@@ -389,9 +389,155 @@ img {
   position: relative;
 }
 
+/* Video Thumbnail and Play Button */
+.video-thumbnail {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background-color: rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-lg);
+  cursor: pointer;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+}
+
+.thumbnail-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+}
+
+.play-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  transition: background-color 0.3s ease;
+  border-radius: var(--radius-lg);
+}
+
+.play-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: rgba(4, 182, 227, 0.9);
+  margin-bottom: 12px;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.play-button svg {
+  width: 24px;
+  height: 24px;
+  margin-left: 4px; /* Slight offset for the play triangle */
+  stroke: white;
+  fill: white;
+}
+
+.play-text {
+  font-weight: 500;
+  font-size: 16px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.video-thumbnail:hover .play-overlay {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.video-thumbnail:hover .play-button {
+  transform: scale(1.1);
+  background-color: var(--cyan);
+}
+
+/* Video Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  overflow: auto;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal.open {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+}
+
+.modal-content {
+  position: relative;
+  width: 90%;
+  max-width: 1000px;
+  margin: auto;
+  background-color: transparent;
+}
+
+.modal-close {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  color: white;
+  font-size: 36px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.modal-video-container {
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  position: relative;
+}
+
+.modal-video-container video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius);
+}
+
+body.modal-open {
+  overflow: hidden; /* Prevent scrolling when modal is open */
+}
+
+/* Quick Explainer Section */
+.quick-explainer-section {
+  margin: 60px 0;
+}
+
+.quick-explainer-section .card {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 /* Event Banner */
 .event-banner {
-  margin-top: 80px;
+  margin-top: 40px;
   margin-bottom: 80px; /* Added space after the banner */
   padding: 24px 0;
   background: var(--paper);
@@ -506,6 +652,90 @@ img {
 
 .model-cards {
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+/* Model Container - Updated layout with cards positioned next to diagram */
+.model-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 40px;
+  align-items: flex-start;
+}
+
+.model-left, .model-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 250px;
+}
+
+.model-center {
+  flex: 2;
+  text-align: center;
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  padding: 30px;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border);
+  min-width: 300px;
+  align-self: center;
+}
+
+.model-card {
+  height: 100%;
+}
+
+.model-card.top {
+  margin-bottom: 20px;
+}
+
+.model-card.bottom {
+  margin-top: 20px;
+}
+
+.model-image {
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  border-radius: var(--radius);
+}
+
+.model-caption {
+  margin-top: 20px;
+  color: var(--ink-soft);
+  font-size: 16px;
+  font-style: italic;
+}
+
+/* Responsive adjustments for model layout */
+@media (max-width: 1100px) {
+  .model-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .model-left, .model-center, .model-right {
+    width: 100%;
+  }
+  
+  .model-left {
+    order: 1;
+  }
+  
+  .model-center {
+    order: 3;
+    margin-top: 30px;
+  }
+  
+  .model-right {
+    order: 2;
+  }
+  
+  .model-card.top, .model-card.bottom {
+    margin: 10px 0;
+  }
 }
 
 /* Subtle accent decorations */

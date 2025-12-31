@@ -6,6 +6,56 @@ document.addEventListener('DOMContentLoaded', () => {
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();
   }
+  
+  // Video Modal Functionality
+  function setupVideoModal() {
+    const videoThumbnail = document.querySelector('.video-thumbnail');
+    const openVideoBtn = document.getElementById('openVideoBtn');
+    const videoModal = document.getElementById('videoModal');
+    const closeVideoBtn = document.getElementById('closeVideoBtn');
+    const modalVideo = document.getElementById('modalVideo');
+    
+    if (videoThumbnail && videoModal && closeVideoBtn && modalVideo) {
+      // Function to open the modal
+      function openModal() {
+        videoModal.classList.add('open');
+        document.body.classList.add('modal-open');
+        modalVideo.play();
+      }
+      
+      // Function to close the modal
+      function closeModal() {
+        videoModal.classList.remove('open');
+        document.body.classList.remove('modal-open');
+        modalVideo.pause();
+      }
+      
+      // Event listeners
+      videoThumbnail.addEventListener('click', openModal);
+      openVideoBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModal();
+      });
+      
+      closeVideoBtn.addEventListener('click', closeModal);
+      
+      // Close modal when clicking outside the video
+      videoModal.addEventListener('click', (e) => {
+        if (e.target === videoModal) {
+          closeModal();
+        }
+      });
+      
+      // Close modal with Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && videoModal.classList.contains('open')) {
+          closeModal();
+        }
+      });
+    }
+  }
+  
+  setupVideoModal();
 
   // Mobile menu toggle
   const menuToggle = document.querySelector('.menu-toggle');
